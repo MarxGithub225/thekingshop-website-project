@@ -1,0 +1,17 @@
+.footer .social {
+    h4 {text-align: center;}
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 768px){
+
+    .footer .about {
+        p {text-align: center;}
+
+        padding-right: 0 !important;
+    }
+}

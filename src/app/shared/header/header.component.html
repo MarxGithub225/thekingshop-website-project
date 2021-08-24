@@ -1,0 +1,35 @@
+<!-- Header -->
+<header class="header shop">
+   <app-topbar></app-topbar>
+   <app-searchbar></app-searchbar>
+    
+    <!-- Header Inner -->
+    <div class="header-inner">
+        <div class="container">
+            <div class="cat-nav-head">
+                <div class="row">
+                    <div class="col-lg-3">
+
+                        <app-categoriesbar></app-categoriesbar>
+                        
+                    </div>
+                    <div class="col-lg-9 col-12">
+                        <app-menubar></app-menubar>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Header Inner -->
+</header>
+<!--/ End Header -->
+
+<div class="mobileMenu" [ngStyle]="{'transform': moduleState.menuOpened ? 'translateX(0px)' : 'translateX(-326px)'}">
+    <app-mobilecategories></app-mobilecategories>
+</div>
+
+<button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+    <span class="hamb-top"></span>
+    <span class="hamb-middle"></span>
+    <span class="hamb-bottom"></span>
+</button>

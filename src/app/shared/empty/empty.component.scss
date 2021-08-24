@@ -1,0 +1,27 @@
+.empty {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: calc(100% - 260px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    z-index: 1000;
+
+    flex-direction: column;
+    
+    .emptyIcon {
+        mat-icon {
+            font-size: 45px;
+            color: #cfcdcd;
+        }
+    }
+
+    .message {
+        margin-top: 25px;
+        font-size: 22px;
+        color: #cfcdcd;
+    }
+}

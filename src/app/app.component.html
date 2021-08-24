@@ -1,0 +1,10 @@
+<span *ngIf="!stateService.state.loading">
+    
+    <!-- router with pages -->
+    <router-outlet></router-outlet>
+
+    <!-- default footer for every pages -->
+    <app-footer></app-footer>
+</span>
+
+<app-loader *ngIf="stateService.state.loading"></app-loader>

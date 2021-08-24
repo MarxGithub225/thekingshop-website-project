@@ -1,0 +1,104 @@
+<app-innerheader></app-innerheader>
+
+<section class="mail-success section page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-12">
+                <div class="mail-inner">
+                    <h2><span>Commande</span> éffectuée avec succès</h2>
+                    <p>Nous voius remercions de nous avoir fait confiance</p>
+                </div>
+            </div>
+
+            <div class="col-lg-6 offset-lg-3 col-12">
+                <div class="bill" id="pdfTable" #pdfTable style="padding: 15px; width: 100%;">
+                    <div style="display: flex; justify-content: space-between; width: 100%;">
+                        <div class="information" style="width: 50%;">
+                            <div class="user" style="font-weight: bold; color: black; font-size: 15px; text-transform: uppercase;">Marx Claver</div>
+                            <div class="mail" style="font-size: 12px;">
+                                Abidjan Dokui, Côte d’Ivoire
+                            </div>
+
+                            <div class="tel" style="font-size: 12px;">
+                                +225 0787467290
+                            </div>
+
+                            <div class="email" style="font-size: 12px;">
+                                mail@gmail.com
+                            </div>
+                        </div>
+
+                        <div style="width: 50%; text-align: right;">
+                            <div class="header" style="font-weight: bold; font-size: 20px; color: rgb(122, 122, 122); margin-top: 10px;">Facture</div>
+                            <div class="number" style="margin-top: 10px; font-size: 12px;"> N° {{number}}</div>
+                        </div>
+                    </div>
+
+
+
+                    <hr>
+
+                    <div style="display: flex; justify-content: space-between; width: 100%;">
+                        <div  style="width: 50%;">
+                            <div class="note" style="color: cadetblue;"> <span style="text-transform: uppercase;">à</span> l'intension de </div>
+
+                            <div class="information" style="margin-top: 25px;">
+                                <div class="user" style="font-weight: bold; color: black; font-size: 15px; text-transform: uppercase;">{{name}}</div>
+                                <div class="mail" style="font-size: 12px;">
+                                    {{city}} {{address}}, Côte d’Ivoire
+                                </div>
+
+                                <div class="tel" style="font-size: 12px;">
+                                    {{phone}}
+                                </div>
+
+                            </div>
+
+                            
+                        </div>
+
+                        <div style="width: 50%; text-align: right;">
+
+                            <div class="date" style="color: cadetblue; font-weight: bold; font-size: 14px">Date</div>
+                            <div class="number" style="margin-top: 10px; font-size: 12px;">{{date ()}}</div>
+                        </div>
+                    </div>
+                    
+
+                    <br>
+
+                    <table class="table" style="width: 100%;">
+                        <thead>
+                            <th>N°</th>
+                            <th>Description</th>
+                            <th>Quantité</th>
+                            <th>Prix Unitaire (FCFA)</th>
+                            <th>Total (FCFA)</th>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor = "let pdt of cart ; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{pdt.title}}</td>
+                                <td>{{pdt.number}}</td>
+                                <td>{{pdt.sellPrice}} FCFA</td>
+                                <td>{{pdt.sellPrice * pdt.number}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <br>
+
+                    <div class="montant" style="background-color: rgb(97, 95, 95); width: 100%; padding: 35px; color: #fff;">
+                        Montant à payer : <strong>{{total()}} FCFA</strong>
+                    </div>
+                    
+                </div>
+                <div class="button5">
+                    <button class="btn btn-primary" (click)="downloadAsPDF(); goHome()">Télécharger et aller à l'accueil</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>

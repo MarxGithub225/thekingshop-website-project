@@ -1,0 +1,40 @@
+<!-- Header -->
+<header class="header shop">
+    <app-topbar></app-topbar>
+    <app-searchbar></app-searchbar>
+    <!-- Header Inner -->
+    <div class="header-inner">
+        <div class="container">
+            <div class="cat-nav-head">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="menu-area">
+                            <!-- Main Menu -->
+                            <nav class="navbar navbar-expand-lg">
+                                <div class="navbar-collapse">	
+                                    <div class="nav-inner">	
+                                        <ul class="nav main-menu menu navbar-nav">
+                                            <li class="active"><a href="#"><h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3></a>
+                                                <ul class="dropdown">
+                                                    <li *ngFor = "let category of stateService.state.categories"><a [routerLink] = "'/catalogue/' + category.id ">{{category.title}}</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a routerLink = "/">Accueil</a></li>		
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            <!--/ End Main Menu -->	
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Header Inner -->
+</header>
+<!--/ End Header -->
+
+<div class="mobileMenu" [ngStyle]="{'transform': moduleState.menuOpened ? 'translateX(0px)' : 'translateX(-326px)'}">
+    <app-mobilecategories></app-mobilecategories>
+</div>

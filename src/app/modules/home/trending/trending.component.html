@@ -1,0 +1,67 @@
+<!-- Start Product Area -->
+<div class="product-area section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Les produits en tendance</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="product-info">
+                    <div class="nav-main">
+                        <!-- Tab Nav -->
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li *ngFor = "let category of stateService.state.categories | slice: 0:6" class="nav-item" (click) = "active = category.id"><a class="nav-link" [class.active] = "active === category.id" data-toggle="tab" [href]="'#' + category.id" role="tab">{{category.title}}</a></li>
+                        </ul>
+                        <!--/ End Tab Nav -->
+                    </div>
+                    <div class="tab-content" id="myTabContent">
+                        <!-- Start Single Tab -->
+                        <div class="tab-pane fade show " [class.active] = "active === category.id" *ngFor = "let category of stateService.state.categories | slice: 0:6" [id]="category.id" role="tabpanel">
+                            <div class="tab-single">
+                                <div class="row">
+                                    <div class="col-xl-3 col-lg-4 col-md-4 col-12" *ngFor = "let product of getProductByCat(category.id)">
+                                        <div class="single-product">
+                                            <div class="product-img">
+                                                <a [routerLink]="'/product/' + product.id">
+                                                    <img class="default-img" [src]="baseUrl + product.images[0].link" alt="#">
+                                                    <img class="hover-img" [src]="baseUrl + product.images[0].link" alt="#">
+                                                </a>
+                                                <div class="button-head">
+                                                    
+                                                    <div class="product-action-2">
+                                                        <a title="Commander" [routerLink]="'/product/' + product.id">Commander</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <h3><a [routerLink]="'/product/' + product.id">{{product.title}}</a></h3>
+                                                <div class="product-price">
+                                                    <span *ngIf = "!product.promotion" class="price with-discount">{{product.sellPrice | number : '1.0-2'}} FCFA </span>
+                                                    
+                                                    
+                                                    <div class="promo">
+                                                        <span *ngIf = "product.promotion" class="oldPrice" >{{product.price | number : '1.0-2'}} FCFA</span>
+                                                        <span *ngIf = "product.promotion" class="percent"> - {{100 - (product.sellPrice * 100/product.price) | number: '1.0-0'}} %</span>
+                                                        <span *ngIf = "product.promotion" class="price with-discount">{{product.sellPrice | number : '1.0-2'}} FCFA </span>
+                                                    </div>
+                                                </div>
+
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/ End Single Tab -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Product Area -->

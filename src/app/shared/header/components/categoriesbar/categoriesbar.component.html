@@ -1,0 +1,12 @@
+<div class="all-category">
+    <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
+    <ul class="main-category">
+        <li
+        *ngFor = "let category of stateService.state.categories"
+        ><a [routerLink] = "'/catalogue/' + category.id ">{{category.title}} <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <ul class="sub-category">
+                <li *ngFor = "let subcat of category.subcategories"><a [routerLink] = "'/catalogue/' + subcat.id + '/sub' ">{{subcat.title}}</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>

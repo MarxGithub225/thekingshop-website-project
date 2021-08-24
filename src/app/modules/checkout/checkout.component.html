@@ -1,0 +1,92 @@
+<app-innerheader></app-innerheader>
+
+<section class="shop checkout section">
+    <div class="container">
+        <div class="row"> 
+            <div class="col-lg-8 col-12">
+                <div class="checkout-form">
+                    <h2>Chekout</h2>
+                    <p>Veuillez renseigner vos informations s'il vous plaît</p>
+                    <!-- Form -->
+                    <form class="form" method="post" action="#">
+                        <div class="row">
+                            
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <label>Nom & prénoms<span>*</span></label>
+                                    <input type="text" name="name" [(ngModel)] = "name" placeholder="" required="required">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <label>Numéro de téléphone<span>*</span></label>
+                                    <input type="text" name="phone" [(ngModel)] = "phone" placeholder="" required="required">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <label>Ville<span>*</span></label>
+                                    <select name="country_name" [(ngModel)] = "city" (change) = "getChange($event)" id="country" 
+                                    >
+                                        <option value="Abidjan">Abidjan</option>
+                                        <option value="Yakmoussouro">Yakmoussouro</option>
+                                    </select>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <label>Adresse<span>*</span></label>
+                                    <input type="text" name="address" [(ngModel)] = "address" placeholder="" required="required">
+                                    
+                                </div>
+                            </div>
+                            
+                            
+                            <!-- <div class="col-12">
+                                <div class="form-group create-account">
+                                    <input id="cbox" type="checkbox">
+                                    <label>Enregistrer mon compte pour d'autres achats</label>
+                                </div>
+                            </div> -->
+                        </div>
+                    </form>
+                    <!--/ End Form -->
+                </div>
+            </div>
+            <div class="col-lg-4 col-12">
+                <div class="order-details">
+                    <!-- Order Widget -->
+                    <div class="single-widget">
+                        <h2>COMMANDE</h2>
+                        <div class="content">
+                            <ul>
+                                <li>Sous total<span>{{total() | number : '1.0-2'}} FCFA</span></li>
+                                <li>(+) Livraison<span>{{shipping | number : '1.0-2'}} FCFA</span></li>
+                                <li class="last">Total<span>{{total() + shipping| number : '1.0-2'}} FCFA</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/ End Order Widget -->
+                    <!-- Order Widget -->
+                    
+                    <!-- Button Widget -->
+                    <div class="single-widget get-button">
+                        <div class="content">
+                            <div class="button">
+                                <a (click) = "next()" class="btn">
+                                    Valider la commande
+                                    <span *ngIf = "loading">
+                                        <mat-spinner color="accent" diameter = "20"></mat-spinner>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ End Button Widget -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

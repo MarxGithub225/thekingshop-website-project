@@ -1,0 +1,9 @@
+<div class="mobileCategorie">
+    <h5 class="mobileCatHeader">CATEGORIES</h5>
+
+    <div class="catMenu">
+        <a class="catItem" (click) = "closeMenu ()" [routerLink] = "'/catalogue/' + category.id " 
+        *ngFor = "let category of stateService.state.categories">{{category.title}}</a>
+    </div>
+    
+</div>

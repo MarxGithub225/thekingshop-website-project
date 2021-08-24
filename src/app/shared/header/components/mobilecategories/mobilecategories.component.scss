@@ -1,0 +1,18 @@
+.mobileCategorie {
+    padding: 10px;
+
+    .mobileCatHeader {
+        margin-bottom: 25px;
+        color: #ffffff;
+    }
+    .catItem {
+        display: block;
+        margin-bottom: 15px;
+        &:last-child {margin-bottom: 0;}
+
+        &:hover {
+            background-color: #ffffff;
+            padding: 15px;
+        }
+    }
+}

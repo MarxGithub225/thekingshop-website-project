@@ -1,0 +1,20 @@
+.mobileMenu {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .mobileMenu {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #ffc600;
+        z-index: 1005;
+        width: 50%;
+        height: 100%;
+
+        -webkit-transform: translateX(-326px);
+        transform: translateX(-326px);
+        transition: .5s ease-in-out;
+    }
+}

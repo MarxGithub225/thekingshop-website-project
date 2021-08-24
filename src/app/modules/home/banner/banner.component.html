@@ -1,0 +1,48 @@
+<!-- Start Small Banner  -->
+<section class="small-banner ">
+    <div class="container">
+        <div class="row">
+            <!-- Single Banner  -->
+            <div class="col-lg-4 col-md-12 col-12">
+            </div>
+            <!-- /End Single Banner  -->
+            <!-- Single Banner  -->
+            <div class="col-lg-8 col-md-12 col-12">
+                <mat-carousel
+                    timings="250ms ease-in"
+                    [autoplay]="true"
+                    interval="6000"
+                    color="accent"
+                    maxWidth="auto"
+                    proportion="40"
+                    slides="100"
+                    [loop]="true"
+                    [hideArrows]="false"
+                    [hideIndicators]="false"
+                    [useKeyboard]="true"
+                    [useMouseWheel]="false"  
+                    orientation="ltr" 
+                    >
+                    <mat-carousel-slide
+                        #matCarouselSlide
+                        *ngFor="let slide of stateService.state.banners; let i = index"
+                        [image]="baseUrl + slide.link"
+                        overlayColor="#00000070"
+                        [hideOverlay]="false"
+                    >
+                        <div class="single-banner">
+                            <div class="content">
+                                <h3>{{slide.note}}</h3>
+                            </div>
+                        </div>
+                    </mat-carousel-slide>
+                    
+                    </mat-carousel>
+                
+            </div>
+            <!-- /End Single Banner  -->
+            
+        </div>
+    </div>
+</section>
+<!-- End Small Banner -->

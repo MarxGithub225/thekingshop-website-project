@@ -1,0 +1,297 @@
+<app-innerheader></app-innerheader>
+        
+<!-- Shop Single -->
+<section class="shop single section">
+            <div class="container">
+                <div class="row"> 
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <!-- Product Slider -->
+                                <div class="product-gallery">
+                                    <!-- Images slider -->
+                                    <div class="flexslider-thumbnails">
+                                        
+                                        <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                                            <mat-carousel
+                                            timings="250ms ease-in"
+                                            [autoplay]="true"
+                                            interval="4000"
+                                            color="accent"
+                                            maxWidth="auto"
+                                            proportion="50"
+                                            slides="100"
+                                            [loop]="true"
+                                            [hideArrows]="false"
+                                            [hideIndicators]="false"
+                                            [useKeyboard]="true"
+                                            [useMouseWheel]="false"
+                                            orientation="ltr"
+                                            >
+                                            <mat-carousel-slide
+                                                #matCarouselSlide
+                                                *ngFor="let image of product.images; let i = index"
+                                                [image]="baseUrl + image.link"
+                                                [hideOverlay]="false"
+                                            >
+                                            </mat-carousel-slide>
+                                            
+                                            </mat-carousel>
+                                        </div>
+                                    
+                                    </div>
+                                    <!-- End Images slider -->
+                                </div>
+                                <!-- End Product slider -->
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="product-des">
+                                    <!-- Description -->
+                                    <div class="short">
+                                        <h4>{{product.title}}</h4>
+                                        <!-- <div class="rating-main">
+                                            <ul class="rating">
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star-half-o"></i></li>
+                                                <li class="dark"><i class="fa fa-star-o"></i></li>
+                                            </ul>
+                                            <a href="#" class="total-review">(102) Review</a>
+                                        </div> -->
+                                        <p class="price" *ngIf = "!product.promotion"><span class="discount">{{product.price | number : '1.0-2'}} FCFA</span></p>
+                                        <p class="price" *ngIf = "product.promotion"><span class="discount">{{product.sellPrice | number : '1.0-2'}} FCFA</span><s>{{product.price | number : '1.0-2'}} FCFA</s> </p>
+                                    </div>
+                                    <!--/ End Description -->
+                                    
+                                    
+                                    <!-- Product Buy -->
+                                    <div class="product-buy">
+                                        <div class="quantity">
+                                            <h6>Quantité :</h6>
+                                            <!-- Input Order -->
+                                            <div class="input-group">
+                                                <div class="button minus">
+                                                    <button type="button" class="btn btn-primary btn-number" [disabled]="quantity === 1" (click) = "decrease()">
+                                                        <i class="ti-minus"></i>
+                                                    </button>
+                                                </div>
+                                                <input type="text" min="1" class="input-number"  [value]="quantity">
+                                                <div class="button plus">
+                                                    <button type="button" class="btn btn-primary btn-number" (click) = "increase()">
+                                                        <i class="ti-plus"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!--/ End Input Order -->
+                                        </div>
+                                        <div class="add-to-cart">
+                                            <a (click) = "order (product)" class="btn">Commander</a>
+                                        </div>
+                                        
+                                    </div>
+                                    <!--/ End Product Buy -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="product-info">
+                                    <div class="nav-main">
+                                        <!-- Tab Nav -->
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <!-- <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a></li> -->
+                                            <!-- <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Reviews</a></li> -->
+                                        </ul>
+                                        <!--/ End Tab Nav -->
+                                    </div>
+                                    <div class="tab-content" id="myTabContent">
+                                        <!-- Description Tab -->
+                                        <div class="tab-pane fade show active" id="description" role="tabpanel">
+                                            <div class="tab-single">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="single-des" [innerHtml] = "product.description">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/ End Description Tab -->
+                                        <!-- Reviews Tab -->
+                                        <div class="tab-pane fade" id="reviews" role="tabpanel">
+                                            <div class="tab-single review-panel">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="ratting-main">
+                                                            <div class="avg-ratting">
+                                                                <h4>4.5 <span>(Overall)</span></h4>
+                                                                <span>Based on 1 Comments</span>
+                                                            </div>
+                                                            <!-- Single Rating -->
+                                                            <div class="single-rating">
+                                                                <div class="rating-author">
+                                                                    <img src="https://wpthemesgrid.com/themes/eshop/images/comments1.jpg" alt="#">
+                                                                </div>
+                                                                <div class="rating-des">
+                                                                    <h6>Naimur Rahman</h6>
+                                                                    <div class="ratings">
+                                                                        <ul class="rating">
+                                                                            <li><i class="fa fa-star"></i></li>
+                                                                            <li><i class="fa fa-star"></i></li>
+                                                                            <li><i class="fa fa-star"></i></li>
+                                                                            <li><i class="fa fa-star-half-o"></i></li>
+                                                                            <li><i class="fa fa-star-o"></i></li>
+                                                                        </ul>
+                                                                        <div class="rate-count">(<span>3.5</span>)</div>
+                                                                    </div>
+                                                                    <p>Duis tincidunt mauris ac aliquet congue. Donec vestibulum consequat cursus. Aliquam pellentesque nulla dolor, in imperdiet.</p>
+                                                                </div>
+                                                            </div>
+                                                            <!--/ End Single Rating -->
+                                                            <!-- Single Rating -->
+                                                            <div class="single-rating">
+                                                                <div class="rating-author">
+                                                                    <img src="https://wpthemesgrid.com/themes/eshop/images/comments2.jpg" alt="#">
+                                                                </div>
+                                                                <div class="rating-des">
+                                                                    <h6>Advin Geri</h6>
+                                                                    <div class="ratings">
+                                                                        <ul class="rating">
+                                                                            <li><i class="fa fa-star"></i></li>
+                                                                            <li><i class="fa fa-star"></i></li>
+                                                                            <li><i class="fa fa-star"></i></li>
+                                                                            <li><i class="fa fa-star"></i></li>
+                                                                            <li><i class="fa fa-star"></i></li>
+                                                                        </ul>
+                                                                        <div class="rate-count">(<span>5.0</span>)</div>
+                                                                    </div>
+                                                                    <p>Duis tincidunt mauris ac aliquet congue. Donec vestibulum consequat cursus. Aliquam pellentesque nulla dolor, in imperdiet.</p>
+                                                                </div>
+                                                            </div>
+                                                            <!--/ End Single Rating -->
+                                                        </div>
+                                                        <!-- Review -->
+                                                        <div class="comment-review">
+                                                            <div class="add-review">
+                                                                <h5>Add A Review</h5>
+                                                                <p>Your email address will not be published. Required fields are marked</p>
+                                                            </div>
+                                                            <h4>Your Rating</h4>
+                                                            <div class="review-inner">
+                                                                <div class="ratings">
+                                                                    <ul class="rating">
+                                                                        <li><i class="fa fa-star"></i></li>
+                                                                        <li><i class="fa fa-star"></i></li>
+                                                                        <li><i class="fa fa-star"></i></li>
+                                                                        <li><i class="fa fa-star"></i></li>
+                                                                        <li><i class="fa fa-star"></i></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--/ End Review -->
+                                                        <!-- Form -->
+                                                        <form class="form" method="post" action="mail/mail.php">
+                                                            <div class="row">
+                                                                <div class="col-lg-6 col-12">
+                                                                    <div class="form-group">
+                                                                        <label>Your Name<span>*</span></label>
+                                                                        <input type="text" name="name" required="required" placeholder="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6 col-12">
+                                                                    <div class="form-group">
+                                                                        <label>Your Email<span>*</span></label>
+                                                                        <input type="email" name="email" required="required" placeholder="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-12 col-12">
+                                                                    <div class="form-group">
+                                                                        <label>Write a review<span>*</span></label>
+                                                                        <textarea name="message" rows="6" placeholder=""></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-12 col-12">
+                                                                    <div class="form-group button5">	
+                                                                        <button type="submit" class="btn">Submit</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        <!--/ End Form -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/ End Reviews Tab -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
+<!--/ End Shop Single -->
+
+<!-- Start Most Popular -->
+<div class="product-area most-popular related-product section">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="section-title">
+                <h2>Vous pouvez être interessé</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+            <owl-carousel-o [options]="customOptions">
+
+            <ng-container *ngFor="let product of otherProduct">
+                <ng-template carouselSlide [id]="product.id">
+                    <div class="product">
+                        <div class="single-product">
+                            <div class="product-img">
+                                <a [routerLink]="'/product/' + product.id">
+                                    <img class="default-img" [src]=" baseUrl + product.images[0].link" alt="#">
+                                    <img class="hover-img" [src]=" baseUrl + product.images[0].link" alt="#">
+                                </a>
+                                <div class="button-head">
+                                    
+                                    <div class="product-action-2">
+                                        <a title="Commander" [routerLink]="'/product/' + product.id">Commander</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h3><a [routerLink]="'/product/' + product.id">{{product.title}}</a></h3>
+                                <div class="product-price">
+                                    <span *ngIf = "!product.promotion" class="price with-discount">{{product.sellPrice | number : '1.0-2'}} FCFA </span>
+                                    
+                                    
+                                    <div class="promo">
+                                        <span *ngIf = "product.promotion" class="oldPrice" >{{product.price | number : '1.0-2'}} FCFA</span>
+                                        <span *ngIf = "product.promotion" class="percent"> - {{100 - (product.sellPrice * 100/product.price) | number: '1.0-0'}} %</span>
+                                        <span *ngIf = "product.promotion" class="price with-discount">{{product.sellPrice | number : '1.0-2'}} FCFA </span>
+                                    </div>
+                                </div>
+        
+                                
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        
+            </owl-carousel-o>
+            
+
+        </div>
+    </div>
+</div>
+</div>
+<!-- End Most Popular Area -->

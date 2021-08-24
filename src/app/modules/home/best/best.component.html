@@ -1,0 +1,50 @@
+<!-- Start Shop Home List  -->
+<section class="shop-home-list section">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="shop-section-title">
+                    <h1>Nos meilleurs produits</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-12" *ngFor ="let product of bestProducts">
+                
+                <!-- Start Single List  -->
+                <div class="single-list">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="list-image overlay">
+                                <img [src]="baseUrl+ product.images[0].link" alt="#">
+                                <a [routerLink]="'/product/' + product.id" class="buy"><i class="fa fa-shopping-bag"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12 no-padding">
+                            <div class="content">
+                                <h5 class="title"><a [routerLink]="'/product/' + product.id">{{product.title}}</a></h5>
+                                
+                                <div class="priceSide" *ngIf = "product.promotion">
+                                    <div class="normalPrice">
+                                        <p class="oldPrice" >{{product.price | number : '1.0-2'}} FCFA</p>
+                                        <p class="percent"> - {{100 - (product.sellPrice * 100/product.price) | number: '1.0-0'}} %</p>
+                                    </div>
+                                    <p class="price with-discount">{{product.sellPrice | number : '1.0-2'}} FCFA </p>
+                                </div>
+
+                                 <p class="price with-discount" *ngIf = "!product.promotion">{{product.sellPrice | number : '1.0-2'}} FCFA </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single List  -->
+                
+            </div>
+            
+            
+        </div>
+    </div>
+</section>
+<!-- End Shop Home List  -->

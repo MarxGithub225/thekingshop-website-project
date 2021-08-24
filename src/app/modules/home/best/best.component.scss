@@ -1,0 +1,53 @@
+
+.priceSide {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    .normalPrice {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .percent {
+        margin-left: 15px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: #000000;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 8px;
+    }
+
+    .oldPrice {
+        text-decoration: line-through;
+    }
+    .price {
+        margin-top: 5px !important;
+        
+    }
+}
+
+.shop-home-list .single-list .content {
+    margin-top: 0px !important;
+
+    .title {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.single-list {
+    .row {
+        display: flex;
+        align-items: center;
+    }
+}

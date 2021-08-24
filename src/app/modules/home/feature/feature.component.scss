@@ -1,0 +1,28 @@
+@media only screen and (max-width: 768px)
+{
+    .shop-services .single-service {
+        padding: 42px 0 18px 0;
+        text-align: center;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .shop-services .single-service i {
+        height: 50px;
+        width: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: #333;
+        background: transparent;
+        border-radius: 100%;
+        display: block;
+        font-size: 32px;
+        position: initial;
+        left: 0;
+        top: 0;
+    }
+}

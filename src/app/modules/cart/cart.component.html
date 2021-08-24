@@ -1,0 +1,89 @@
+<app-innerheader></app-innerheader>
+
+<app-empty *ngIf = "!cart.length"></app-empty>
+<div class="shopping-cart section" *ngIf = "cart.length">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Shopping Summery -->
+                <table class="table shopping-summery">
+                    <thead>
+                        <tr class="main-hading">
+                            <th>PRODUIT</th>
+                            <th>TITRE</th>
+                            <th class="text-center">PRIX</th>
+                            <th class="text-center">QUANTITE</th>
+                            <th class="text-center">TOTAL</th> 
+                            <th class="text-center"><i class="ti-trash remove-icon"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor = "let product of cart">
+                            <td class="image" data-title="No"><img [src]=" baseUrl + product.images[0].link" alt="#"></td>
+                            <td class="product-des" data-title="Description">
+                                <p class="product-name"><a [routerLink]="'/product/' + product.id">{{product.title}}</a></p>
+                            </td>
+                            <td class="price" data-title="Price"><span> {{product.sellPrice | number : '1.0-2'}} FCFA</span></td>
+                            <td class="qty" data-title="Qty"><!-- Input Order -->
+                                <div class="input-group">
+                                    <div class="button minus">
+                                        <button type="button" class="btn btn-primary btn-number" [disabled]="product.number === 1" (click) = "decrease(product)">
+                                            <i class="ti-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" min="1" class="input-number"  [value]="product.number">
+                                    <div class="button plus">
+                                        <button type="button" class="btn btn-primary btn-number" (click) = "increase(product)">
+                                            <i class="ti-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--/ End Input Order -->
+                            </td>
+                            <td class="total-amount" data-title="Total"><span>{{product.sellPrice * product.number | number : '1.0-2'}} FCFA</span></td>
+                            <td class="action" data-title="Remove"><a (click) = "remove(product)"><i class="ti-trash remove-icon"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--/ End Shopping Summery -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <!-- Total Amount -->
+                <div class="total-amount">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-5 col-12">
+                            <!-- <div class="left">
+                                <div class="coupon">
+                                    <form action="#" target="_blank">
+                                        <input name="Coupon" placeholder="Enter Your Coupon">
+                                        <button class="btn">Apply</button>
+                                    </form>
+                                </div>
+                                <div class="checkbox">
+                                    <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Shipping (+10$)</label>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="col-lg-4 col-md-7 col-12">
+                            <div class="right">
+                                <ul>
+                                    <!-- <li>Cart Subtotal<span>$330.00</span></li>
+                                    <li>Shipping<span>Free</span></li>
+                                    <li>You Save<span>$20.00</span></li> -->
+                                    <li class="last">Totaux<span>{{total() | number : '1.0-2'}} FCFA</span></li>
+                                </ul>
+                                <div class="button5">
+                                    <a routerLink="/checkout" class="btn btn-primary" >Commander</a>
+                                    <a routerLink="/" class="btn">Faire plus d'achat</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ End Total Amount -->
+            </div>
+        </div>
+    </div>
+</div>
